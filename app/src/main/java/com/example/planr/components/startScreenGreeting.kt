@@ -14,7 +14,7 @@ fun startScreenGreeting (){
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Balls",
+            text = "Hi User",
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
         )
