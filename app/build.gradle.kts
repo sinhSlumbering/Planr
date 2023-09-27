@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.planr"
         minSdk = 30
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -67,6 +67,12 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation("androidx.compose.material:material:1.5.1")
     implementation("androidx.compose.material:material-icons-extended:1.5.1")
     implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.3")
+    implementation("androidx.navigation:navigation-testing:2.7.3")
+    implementation("androidx.navigation:navigation-compose:2.7.3")
 }

@@ -1,6 +1,7 @@
 package com.example.planr.components
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,13 +22,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.planr.ui.theme.PlanrTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun profileHeaderComponent(){
+fun profileHeaderComponent(
+    onClickProfile: () -> Unit,
+){
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -47,6 +48,7 @@ fun profileHeaderComponent(){
             modifier = Modifier
                 .size(30.dp)
                 .clip(CircleShape)
+                .clickable { onClickProfile() }
         )
         BadgedBox(badge = {
             Badge (
@@ -65,10 +67,3 @@ fun profileHeaderComponent(){
     }
 }
 
-@Preview
-@Composable
-fun headerprev(){
-    PlanrTheme {
-        profileHeaderComponent()
-    }
-}
