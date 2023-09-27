@@ -100,7 +100,7 @@ fun pomodoroTimer(
             text = ( currentTime / 1000L).toString(),
             fontSize = 44.sp,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onPrimary
+            color = MaterialTheme.colorScheme.onPrimaryContainer
         )
         Button(
             onClick = {
@@ -120,7 +120,8 @@ fun pomodoroTimer(
             Text(
                 text = if (isTimerRunning && currentTime >= 0L) "Stop"
                 else if (!isTimerRunning && currentTime >= 0L) "Start"
-                else "Restart"
+                else "Restart",
+                color = MaterialTheme.colorScheme.onPrimaryContainer
             )
         }
     }

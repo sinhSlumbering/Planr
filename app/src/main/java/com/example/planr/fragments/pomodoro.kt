@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,20 +12,16 @@ import com.example.planr.components.pomodoroTimer
 
 @Composable
 fun pomodoro(){
-    Surface(
-        color = MaterialTheme.colors.background,
-        modifier = Modifier.fillMaxSize(),
-        ) {
-        Box (
-            contentAlignment = Alignment.Center,
-            ){
-            pomodoroTimer(
-                totalTime = 100L * 1000L,
-                handleColor = MaterialTheme.colors.primary,
-                inactiveBarColor = MaterialTheme.colors.onBackground,
-                activeBarColor =MaterialTheme.colors.primary,
-                modifier = Modifier.size(200.dp),
-            )
-        }
+    Box (
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ){
+        pomodoroTimer(
+            totalTime = 100L * 1000L,
+            handleColor = MaterialTheme.colors.secondary,
+            inactiveBarColor = MaterialTheme.colors.onSurface,
+            activeBarColor = MaterialTheme.colors.secondaryVariant,
+            modifier = Modifier.size(200.dp),
+        )
     }
 }
