@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.planr.BottomBarScreen
+import com.example.planr.fragments.pomodoro
 import com.example.planr.fragments.taskScreen
 import com.example.planr.screens.DebugScreen
 
@@ -24,9 +25,7 @@ fun HomeNavGraph(navController: NavHostController){
             )
         }
         composable(route = BottomBarScreen.Pomodoro.route){
-            DebugScreen(name = "Pomodoro") {
-                
-            }
+            pomodoro()
         }
         composable(BottomBarScreen.Settings.route){
             DebugScreen(name = "Settings") {
