@@ -75,4 +75,8 @@ dependencies {
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.3")
     implementation("androidx.navigation:navigation-testing:2.7.3")
     implementation("androidx.navigation:navigation-compose:2.7.3")
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.3.2")
+    implementation("com.airbnb.android:lottie-compose:6.1.0")
+
+
 }
