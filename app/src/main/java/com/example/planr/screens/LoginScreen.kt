@@ -196,7 +196,7 @@ PlanrTheme {
             Spacer(modifier = Modifier.height(20.dp))
             Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
                 Button(
-                    onClick = { },
+                    onClick = { onClick() },
                     shape = RoundedCornerShape(80.dp),
                     modifier = Modifier.clickable { onClick() }
                         .fillMaxWidth()
@@ -212,7 +212,7 @@ PlanrTheme {
                 modifier = Modifier.clickable { onForgotClick() },
 
                 text = AnnotatedString("Forgot password?"),
-                onClick = { },
+                onClick = { onForgotClick() },
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontFamily = FontFamily.Default,
