@@ -1,6 +1,5 @@
 package com.example.planr.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,8 +16,6 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme.colorScheme
-import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -30,34 +27,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontFamily.Companion.Serif
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.planr.navgraphs.AuthScreen
-import com.example.planr.ui.theme.Purple80
-import com.example.planr.ui.theme.PlanrTheme
-
-import androidx.compose.ui.text.googlefonts.Font
-import androidx.compose.ui.text.googlefonts.GoogleFont
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withAnnotation
-import androidx.compose.ui.text.withStyle
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.planr.R
+import com.example.planr.ui.theme.PlanrTheme
+import com.example.planr.ui.theme.Purple80
 
 
 //@Composable
@@ -130,7 +116,7 @@ PlanrTheme {
             ClickableText(
                 text = AnnotatedString("Sign up here"),
 //                    modifier = Modifier.padding(20.dp),
-                onClick = {onSignUpClick() },
+                onClick = { onSignUpClick() },
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontFamily = FontFamily.Default,
@@ -146,42 +132,27 @@ PlanrTheme {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.TopCenter
     ) {
+
         Column(
             modifier = Modifier.padding(20.dp),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-
-            val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.clock_animation))
-
-
-
-            LottieAnimation(
+            Text(
                 modifier = Modifier
                     .fillMaxSize()
-                    .size(2.dp)
-                    .padding(100.dp),
-                composition = composition,
-                iterations = LottieConstants.IterateForever,
+                    .padding(70.dp),
+                text = "Welcome!",
+                style = TextStyle(fontSize = 40.sp),
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+            )
+            Spacer(modifier = Modifier.height(0.dp))
 
-                )
+
         }
-        Text(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(70.dp),
-            text = "Welcome!",
-            style = TextStyle(fontSize = 40.sp),
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold,
-        )
-        Spacer(modifier = Modifier.height(0.dp))
-
     }
-    }
-
-
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -197,8 +168,17 @@ PlanrTheme {
             val email = remember { mutableStateOf(TextFieldValue()) }
             val password = remember { mutableStateOf(TextFieldValue()) }
 
-
-
+            val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.clock_animation))
+            Box (modifier = Modifier.size(300.dp)){
+                LottieAnimation(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .size(100.dp)
+                        .padding(10.dp),
+                    composition = composition,
+                    iterations = LottieConstants.IterateForever,
+                )
+            }
             Spacer(modifier = Modifier.height(20.dp))
             TextField(
                 label = { Text(text = "Email Address") },
@@ -241,18 +221,21 @@ PlanrTheme {
             )
         }
     }
+
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-@Preview
-fun LoginScreenPreview() {
-    val navController = rememberNavController()
-
-    LoginScreen(
-        navController = navController,
-        onClick = { /* Define action for the onClick event */ },
-        onSignUpClick = { /* Define action for the onSignUpClick event */ },
-        onForgotClick = { /* Define action for the onForgotClick event */ },
-    )
 }
+
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//@Preview
+//fun LoginScreenPreview() {
+//    val navController = rememberNavController()
+//
+//    LoginScreen(
+//        navController = navController,
+//        onClick = { /* Define action for the onClick event */ },
+//        onSignUpClick = { /* Define action for the onSignUpClick event */ },
+//        onForgotClick = { /* Define action for the onForgotClick event */ },
+//    )
+//}
