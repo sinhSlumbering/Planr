@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import com.example.planr.components.profileHeaderComponent
 import com.example.planr.components.startScreenGreeting
 import com.example.planr.components.taskComponent
-import com.example.planr.data.debugTasks
+import com.example.planr.data.model.debugTasks
 
 @Composable
 fun taskScreen(

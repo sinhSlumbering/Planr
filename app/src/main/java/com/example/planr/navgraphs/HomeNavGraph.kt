@@ -1,15 +1,19 @@
 package com.example.planr.navgraphs
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.planr.BottomBarScreen
+import com.example.planr.fragments.ManageFragment
 import com.example.planr.fragments.pomodoro
 import com.example.planr.fragments.taskScreen
 import com.example.planr.screens.DebugScreen
+import com.example.planr.viewmodels.ManageViewModel
+
 
 @Composable
 fun HomeNavGraph(navController: NavHostController){
@@ -17,6 +21,7 @@ fun HomeNavGraph(navController: NavHostController){
         route = Graph.HOME,
         startDestination = BottomBarScreen.Home.route
     ){
+        profileNavGraph(navController = navController)
         composable(route = BottomBarScreen.Home.route){
             taskScreen(
                 onClickProfile = {
@@ -27,10 +32,9 @@ fun HomeNavGraph(navController: NavHostController){
         composable(route = BottomBarScreen.Pomodoro.route){
             pomodoro()
         }
-        composable(BottomBarScreen.Settings.route){
-            DebugScreen(name = "Settings") {
-                
-            }
+        composable(BottomBarScreen.Manage.route){
+            val manageViewModel = hiltViewModel<ManageViewModel>()
+            ManageFragment(manViewModel = manageViewModel)
         }
 
     }

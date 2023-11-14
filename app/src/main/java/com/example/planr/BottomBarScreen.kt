@@ -1,9 +1,9 @@
 package com.example.planr
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PunchClock
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class BottomBarScreen (
@@ -21,10 +21,10 @@ sealed class BottomBarScreen (
         title = "POMODORO",
         icon = Icons.Default.PunchClock
     )
-    object Settings: BottomBarScreen(
-        route = "Settings",
-        title = "Settings",
-        icon = Icons.Default.Settings
+    object Manage: BottomBarScreen(
+        route = "MANAGE",
+        title = "Manage",
+        icon = Icons.Default.EditCalendar
     )
 
 }

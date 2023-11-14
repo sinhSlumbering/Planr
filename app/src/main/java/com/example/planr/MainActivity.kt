@@ -6,7 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.example.planr.navgraphs.RootNavGraph
 import com.example.planr.ui.theme.PlanrTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,4 +21,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-

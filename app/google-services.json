@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "188917421209",
+    "project_id": "planr-727af",
+    "storage_bucket": "planr-727af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188917421209:android:585faf3bb6c5c95faa5408",
+        "android_client_info": {
+          "package_name": "com.example.planr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJn7WTwzfc95lhXncs1XS9i3Vz_ydy_vI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
