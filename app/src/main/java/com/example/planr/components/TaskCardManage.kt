@@ -19,9 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.planr.data.model.Task
+import com.example.planr.data.model.debugTasks
 
 @Composable
 fun TaskCardComponent(
@@ -30,11 +32,15 @@ fun TaskCardComponent(
     task: Task,
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 8.dp),
         shape = RoundedCornerShape(8.dp),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Column {
@@ -83,4 +89,10 @@ fun TaskCardComponent(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun prevtaskCard(){
+    TaskCardComponent(deleteTask = {}, updateTask = {}, task = debugTasks[1])
 }

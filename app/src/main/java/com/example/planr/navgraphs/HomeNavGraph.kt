@@ -13,6 +13,9 @@ import com.example.planr.fragments.pomodoro
 import com.example.planr.fragments.taskScreen
 import com.example.planr.screens.DebugScreen
 import com.example.planr.viewmodels.ManageViewModel
+import com.example.planr.viewmodels.TaskScreenViewModel
+
+//import com.example.planr.viewmodels.PomodoroTimerViewModel
 
 
 @Composable
@@ -23,13 +26,16 @@ fun HomeNavGraph(navController: NavHostController){
     ){
         profileNavGraph(navController = navController)
         composable(route = BottomBarScreen.Home.route){
+            val tsViewModel = hiltViewModel<TaskScreenViewModel>()
             taskScreen(
+                tsViewModel,
                 onClickProfile = {
                     navController.navigate(Graph.DETAILS)
                 }
             )
         }
         composable(route = BottomBarScreen.Pomodoro.route){
+//            val pomodoroTimerViewModel = hiltViewModel<PomodoroTimerViewModel>()
             pomodoro()
         }
         composable(BottomBarScreen.Manage.route){

@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.planr.data.model.Task
-import com.example.planr.ui.ManageScreenUIState
+import com.example.planr.ui.states.ManageScreenUIState
 
 @Composable
 fun UpdateTaskDialogComponent(
@@ -38,7 +39,7 @@ fun UpdateTaskDialogComponent(
     Dialog(onDismissRequest = { closeDialog() }) {
         Surface(
             shape = RoundedCornerShape(12.dp),
-            color = Color.White,
+            color = MaterialTheme.colorScheme.primaryContainer,
             modifier = Modifier.fillMaxWidth(),
         ) {
             LazyColumn(contentPadding = PaddingValues(12.dp)) {
@@ -87,12 +88,12 @@ fun UpdateTaskDialogComponent(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
-                        value = uiState.currentTextFieldBody,
+                        value = uiState.currentTextFieldStartTime,
                         onValueChange = { startTime ->
                             setTaskStartTime(startTime)
                         },
                         label = { Text("Start Time") },
-                        placeholder = { Text(task?.body ?: "") },
+                        placeholder = { Text(task?.startTime ?: "") },
 
                         )
                 }
@@ -100,12 +101,12 @@ fun UpdateTaskDialogComponent(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
-                        value = uiState.currentTextFieldBody,
+                        value = uiState.currentTextFieldEndTime,
                         onValueChange = { endTime ->
                             setTaskEndTime(endTime)
                         },
                         label = { Text("End Time") },
-                        placeholder = { Text(task?.body ?: "") },
+                        placeholder = { Text(task?.endTime ?: "") },
 
                         )
                 }

@@ -1,4 +1,4 @@
-package com.example.planr.ui
+package com.example.planr.ui.states
 
 import com.example.planr.data.model.Task
 import com.example.planr.data.model.TaskProgress

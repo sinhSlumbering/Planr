@@ -6,9 +6,9 @@ import com.example.planr.common.Result
 import com.example.planr.data.model.Task
 import com.example.planr.data.model.TaskProgress
 import com.example.planr.data.repositories.TaskRepository
-import com.example.planr.ui.ManageScreenUIState
 import com.example.planr.ui.events.ManageScreenUIEvents
 import com.example.planr.ui.sideeffects.ManageScreenSideEffects
+import com.example.planr.ui.states.ManageScreenUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
