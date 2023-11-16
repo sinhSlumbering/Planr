@@ -84,10 +84,10 @@ fun ManageFragment(manViewModel: ManageViewModel){
             saveTask = {
                        manViewModel.sendEvent(
                            event = ManageScreenUIEvents.AddTask(
-                               title = uiState.currentTextFieldTitle,
-                               body = uiState.currentTextFieldBody,
-                               startTime = uiState.currentTextFieldStartTime,
-                               endTime = uiState.currentTextFieldEndTime,
+                               title = uiState.currentTextFieldTitle?:"",
+                               body = uiState.currentTextFieldBody?:"",
+                               startTime = uiState.currentTextFieldStartTime?:"",
+                               endTime = uiState.currentTextFieldEndTime?:"",
                                progress = TaskProgress.UNSCHEDULED
                            )
                        )
@@ -107,23 +107,32 @@ fun ManageFragment(manViewModel: ManageViewModel){
             },
             setTaskBody = {body->
                 manViewModel.sendEvent(
-                    event = ManageScreenUIEvents.OnChangeTaskBody(body=body)
+                    event = ManageScreenUIEvents.OnChangeTaskBody(body=body?:"")
                 )
             },
             setTaskStartTime = {startTime->
                 manViewModel.sendEvent(
-                    event = ManageScreenUIEvents.OnChangeStartTime(startTime= startTime)
+                    event = ManageScreenUIEvents.OnChangeStartTime(startTime= startTime?:"")
                 )
             },
             setTaskEndTime = {endTime->
                 manViewModel.sendEvent(
-                    event = ManageScreenUIEvents.OnChangeEndTime(endTime= endTime)
+                    event = ManageScreenUIEvents.OnChangeEndTime(endTime= endTime?:"")
                 )
             },
             saveTask = {
                 manViewModel.sendEvent(event = ManageScreenUIEvents.UpdateTask)
                        },
             closeDialog = { manViewModel.sendEvent(event = ManageScreenUIEvents.OnChangeUpdateDialogState(false)) },
+            onExpandedChange = {expanded->
+                manViewModel.sendEvent(
+                    event = ManageScreenUIEvents.OnChangeDropDownExpanded(expanded)
+                )
+            },
+            selectedProgress = {str->
+                manViewModel.sendEvent(
+                    event = ManageScreenUIEvents.OnChangeDropDownOption(str?:"")
+                )},
             task = uiState.taskToBeUpdated,
             uiState = uiState
         )

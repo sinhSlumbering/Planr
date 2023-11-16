@@ -1,7 +1,6 @@
 package com.example.planr.ui.states
 
 import com.example.planr.data.model.Task
-import com.example.planr.data.model.TaskProgress
 
 data class ManageScreenUIState (
     val isLoading: Boolean = false,
@@ -10,9 +9,10 @@ data class ManageScreenUIState (
     val taskToBeUpdated: Task? = null,
     val isShowAddTaskDialog: Boolean = false,
     val isShowUpdateTaskDialog: Boolean = false,
-    val currentTextFieldTitle: String = "",
-    val currentTextFieldBody: String = "",
-    val currentTextFieldStartTime: String = "",
-    val currentTextFieldEndTime: String = "",
-    val currentProgress: TaskProgress = TaskProgress.UNSCHEDULED,
+    val isProgressMenuExpanded: Boolean = false,
+    val selectedProgress: String? = "UNSCHEDULED",
+    val currentTextFieldTitle: String? = null,
+    val currentTextFieldBody: String? = null,
+    val currentTextFieldStartTime: String? = null,
+    val currentTextFieldEndTime: String? = null,
 )

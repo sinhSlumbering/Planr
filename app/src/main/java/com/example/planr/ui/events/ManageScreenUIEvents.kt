@@ -17,7 +17,7 @@ sealed class ManageScreenUIEvents{
     object UpdateTask : ManageScreenUIEvents()
 
     data class DeleteTask(val id: String): ManageScreenUIEvents()
-    data class OnChangeTaskTitle(val title: String): ManageScreenUIEvents()
+    data class OnChangeTaskTitle(val title: String?): ManageScreenUIEvents()
 
     data class OnChangeTaskBody(val body: String): ManageScreenUIEvents()
 
@@ -29,5 +29,9 @@ sealed class ManageScreenUIEvents{
     data class OnChangeUpdateDialogState(val show: Boolean): ManageScreenUIEvents()
 
     data class SetTaskToBeUpdated(val taskToBeUpdated: Task): ManageScreenUIEvents()
+
+    data class OnChangeDropDownExpanded(val expanded: Boolean): ManageScreenUIEvents()
+
+    data class OnChangeDropDownOption(val progress: String): ManageScreenUIEvents()
 
 }

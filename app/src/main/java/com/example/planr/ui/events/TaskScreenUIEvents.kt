@@ -7,7 +7,6 @@ sealed class TaskScreenUIEvents {
 
     object UpdateTask: TaskScreenUIEvents()
 
-    data class SetTaskToBeUpdated(val taskToBeUpdated: Task): TaskScreenUIEvents()
 
     data class SetTaskToBeExpanded(val taskToBeExpanded: Task):TaskScreenUIEvents()
 

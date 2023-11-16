@@ -55,7 +55,7 @@ fun AddTaskDialogComponent(
                 item{
                     Spacer(modifier = Modifier.height(16.dp))
                     OutlinedTextField(
-                        value = uiState.currentTextFieldTitle,
+                        value = uiState.currentTextFieldTitle?:"",
                         onValueChange = { title ->
                             setTaskTitle(title)
                         },
@@ -66,7 +66,7 @@ fun AddTaskDialogComponent(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
-                        value = uiState.currentTextFieldBody,
+                        value = uiState.currentTextFieldBody?:"",
                         onValueChange = { body ->
                             setTaskBody(body)
                         },
@@ -77,7 +77,7 @@ fun AddTaskDialogComponent(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
-                        value = uiState.currentTextFieldStartTime,
+                        value = uiState.currentTextFieldStartTime?:"",
                         onValueChange = { body ->
                             setTaskStartTime(body)
                         },
@@ -88,7 +88,7 @@ fun AddTaskDialogComponent(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
-                        value = uiState.currentTextFieldEndTime,
+                        value = uiState.currentTextFieldEndTime?:"",
                         onValueChange = { body ->
                             setTaskEndTime(body)
                         },

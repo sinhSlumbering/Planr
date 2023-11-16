@@ -96,7 +96,7 @@ class ManageViewModel @Inject constructor(
                 onChangeTaskBody(oldState = oldState, body = event.body)
             }
             is ManageScreenUIEvents.OnChangeTaskTitle -> {
-                onChangeTaskTitle(oldState = oldState, title = event.title)
+                onChangeTaskTitle(oldState = oldState, title = event.title?:"")
             }
             is ManageScreenUIEvents.OnChangeUpdateDialogState -> {
                 onUpdateAddTaskDialog(oldState, isShown = event.show)
@@ -107,18 +107,33 @@ class ManageViewModel @Inject constructor(
             ManageScreenUIEvents.UpdateTask -> {
                 updateTask(oldState = oldState)
             }
+
+            is ManageScreenUIEvents.OnChangeDropDownExpanded -> {
+                onChangeDropDownExpanded(oldState=oldState, expanded = event.expanded)
+            }
+            is ManageScreenUIEvents.OnChangeDropDownOption -> {
+                onChangeDropDownOption(oldState=oldState, selected=event.progress)
+            }
         }
+    }
+
+    private fun onChangeDropDownOption(oldState: ManageScreenUIState, selected: String) {
+        setState(oldState.copy(selectedProgress = selected))
+    }
+
+    private fun onChangeDropDownExpanded(oldState: ManageScreenUIState, expanded: Boolean) {
+        setState(oldState.copy(isProgressMenuExpanded = expanded))
     }
 
     private fun updateTask(oldState: ManageScreenUIState) {
         viewModelScope.launch {
             setState(oldState.copy(isLoading = true))
 
-            val title = oldState.currentTextFieldTitle
-            val body = oldState.currentTextFieldBody
-            val startTime = oldState.currentTextFieldStartTime
-            val endTime = oldState.currentTextFieldEndTime
-            val progress = oldState.currentProgress
+            val title = oldState.currentTextFieldTitle?:""
+            val body = oldState.currentTextFieldBody?:""
+            val startTime = oldState.currentTextFieldStartTime?:""
+            val endTime = oldState.currentTextFieldEndTime?:""
+            val progress = TaskProgress.valueOf(oldState.selectedProgress.toString())
             val taskToBeUpdated = oldState.taskToBeUpdated
 
             when(
@@ -140,11 +155,12 @@ class ManageViewModel @Inject constructor(
                     setState(
                         oldState.copy(
                             isLoading = false,
-                            currentTextFieldTitle = "",
-                            currentTextFieldBody = "",
-                            currentProgress = TaskProgress.UNSCHEDULED,
-                            currentTextFieldEndTime = "",
-                            currentTextFieldStartTime = "",
+                            currentTextFieldTitle = null,
+                            currentTextFieldBody = null,
+//                            currentProgress = TaskProgress.UNSCHEDULED,
+                            currentTextFieldEndTime = null,
+                            currentTextFieldStartTime = null,
+                            selectedProgress = null,
                         ),
                     )
                     sendEvent(ManageScreenUIEvents.OnChangeUpdateDialogState(false))

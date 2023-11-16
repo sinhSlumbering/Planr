@@ -20,6 +20,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
@@ -43,6 +44,9 @@ fun ExpandedTaskCard(
     selectedProgress: (String) -> Unit,
     saveTask: () -> Unit,
 ){
+    LaunchedEffect(key1 = "fetchTaskStuff" ){
+        selectedProgress((task?.progress.toString())?:TaskProgress.UNSCHEDULED.toString())
+    }
     Dialog(onDismissRequest = { closeDialog() }) {
         Surface(
             shape = RoundedCornerShape(12.dp),
@@ -150,6 +154,7 @@ fun ExpandedTaskCard(
                         Button(
                             onClick = {
                                 saveTask()
+                                println(task?.progress.toString())
                                 selectedProgress(TaskProgress.UNSCHEDULED.toString())
                                 closeDialog()
                             },

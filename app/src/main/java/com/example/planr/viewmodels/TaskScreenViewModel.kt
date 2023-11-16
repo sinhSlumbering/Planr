@@ -65,9 +65,6 @@ class TaskScreenViewModel @Inject constructor(
             is TaskScreenUIEvents.OnChangeExpandedDialogState -> {
                 onChangeExpandedDialogState(oldState=oldState, isShown = event.show)
             }
-            is TaskScreenUIEvents.SetTaskToBeUpdated -> {
-                setTaskToBeUpdated(oldState = oldState, task = event.taskToBeUpdated)
-            }
             TaskScreenUIEvents.UpdateTask -> {
                 updateTask(oldState=oldState)
             }
@@ -127,9 +124,6 @@ class TaskScreenViewModel @Inject constructor(
         }
     }
 
-    private fun setTaskToBeUpdated(oldState: TaskScreenUIState, task: Task) {
-        setState(oldState.copy(taskToBeUpdated = task))
-    }
 
     private fun onChangeExpandedDialogState(oldState: TaskScreenUIState, isShown: Boolean) {
             setState(oldState.copy(isShowExpandedCard = isShown))
