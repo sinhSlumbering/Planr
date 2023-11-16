@@ -16,6 +16,7 @@ import com.example.planr.components.LoadingComponent
 import com.example.planr.components.profileHeaderComponent
 import com.example.planr.components.startScreenGreeting
 import com.example.planr.components.taskComponent
+import com.example.planr.data.model.TaskProgress
 import com.example.planr.ui.events.TaskScreenUIEvents
 import com.example.planr.viewmodels.TaskScreenViewModel
 
@@ -78,7 +79,10 @@ fun taskScreen(
 
                     Spacer(modifier = Modifier.height(30.dp))
                 }
-                items(uiState.tasks){ task->
+                items(uiState.tasks.filter {
+                    it.progress == TaskProgress.SCHEDULED
+                }
+                ){ task->
                     taskComponent(task = task, onCardClick = {
                         tsViewModel.sendEvent(
                             event = TaskScreenUIEvents.OnChangeExpandedDialogState(true)

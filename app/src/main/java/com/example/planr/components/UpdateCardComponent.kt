@@ -56,7 +56,7 @@ fun UpdateTaskDialogComponent(
     Dialog(onDismissRequest = { closeDialog() }) {
         Surface(
             shape = RoundedCornerShape(12.dp),
-            color = MaterialTheme.colorScheme.primaryContainer,
+            color = MaterialTheme.colorScheme.secondaryContainer,
             modifier = Modifier.fillMaxWidth(),
         ) {
             LazyColumn(contentPadding = PaddingValues(12.dp)) {
