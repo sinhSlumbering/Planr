@@ -10,4 +10,5 @@ data class TaskScreenUIState (
     val errorMessage: String? = null,
     val isShowExpandedCard: Boolean = false,
     val isProgressMenuExpanded: Boolean = false,
+    val selectedProgress: String? = "UNSCHEDULED"
 )

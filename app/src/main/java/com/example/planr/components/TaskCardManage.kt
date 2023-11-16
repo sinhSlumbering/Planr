@@ -43,7 +43,9 @@ fun TaskCardComponent(
                 .padding(12.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Column {
+            Column(
+                modifier = Modifier.weight(8f)
+            ) {
                 Text(
                     text = task.title,
                     fontSize = 18.sp,
@@ -68,7 +70,8 @@ fun TaskCardComponent(
                 )
             }
 
-            Column(verticalArrangement = Arrangement.SpaceAround) {
+            Column(verticalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier.weight(1f)) {
                 IconButton(onClick = {
                     deleteTask(task.id)
                 }) {

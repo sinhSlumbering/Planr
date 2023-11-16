@@ -37,7 +37,16 @@ fun taskScreen(
                 )
             },
             uiState = uiState,
-            onExpandedChange = {},
+            onExpandedChange = {expanded->
+                tsViewModel.sendEvent(
+                    event = TaskScreenUIEvents.OnChangeDropDownExpanded(expanded)
+                )
+            },
+            selectedProgress = {str->
+                tsViewModel.sendEvent(
+                    event = TaskScreenUIEvents.OnChangeDropDownOption(str)
+                )
+            }
         )
     }
     when{
@@ -72,7 +81,8 @@ fun taskScreen(
                         tsViewModel.sendEvent(
                             event = TaskScreenUIEvents.SetTaskToBeExpanded(task)
                         )
-                    })
+                    }
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                 }
             }

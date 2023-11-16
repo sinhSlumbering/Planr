@@ -55,8 +55,12 @@ class TaskScreenViewModel @Inject constructor(
             TaskScreenUIEvents.GetTasks -> {
                 getTasks(oldState = oldState)
             }
-            is TaskScreenUIEvents.OnChangeDropDownExpanded -> TODO()
-            is TaskScreenUIEvents.OnChangeDropDownOption -> TODO()
+            is TaskScreenUIEvents.OnChangeDropDownExpanded -> {
+                onChangeDropDownExpanded(oldState=oldState, expanded = event.expanded)
+            }
+            is TaskScreenUIEvents.OnChangeDropDownOption -> {
+                onChangeDropDownOption(oldState=oldState, selected=event.progress)
+            }
             is TaskScreenUIEvents.OnChangeExpandedDialogState -> {
                 onChangeExpandedDialogState(oldState=oldState, isShown = event.show)
             }
@@ -71,6 +75,14 @@ class TaskScreenViewModel @Inject constructor(
                 setTaskToBeExpanded(oldState = oldState, task = event.taskToBeExpanded)
             }
         }
+    }
+
+    private fun onChangeDropDownOption(oldState: TaskScreenUIState, selected: String) {
+        setState(oldState.copy(selectedProgress = selected))
+    }
+
+    private fun onChangeDropDownExpanded(oldState: TaskScreenUIState, expanded: Boolean) {
+        setState(oldState.copy(isProgressMenuExpanded = expanded))
     }
 
     private fun setTaskToBeExpanded(oldState: TaskScreenUIState, task: Task) {
