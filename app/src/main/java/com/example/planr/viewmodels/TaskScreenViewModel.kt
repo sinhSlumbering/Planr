@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.planr.common.Result
 import com.example.planr.data.model.Task
+import com.example.planr.data.model.TaskProgress
 import com.example.planr.data.repositories.TaskRepository
 import com.example.planr.ui.events.TaskScreenUIEvents
 import com.example.planr.ui.states.TaskScreenUIState
@@ -90,7 +91,40 @@ class TaskScreenViewModel @Inject constructor(
     }
 
     private fun updateTask(oldState: TaskScreenUIState) {
-        TODO()
+        viewModelScope.launch {
+            setState(oldState.copy(isLoading = true))
+            val title = oldState.taskToBeExpanded?.title?:""
+            val body = oldState.taskToBeExpanded?.body?:""
+            val startTime = oldState.taskToBeExpanded?.startTime?:""
+            val endTime = oldState.taskToBeExpanded?.endTime?:""
+            val progress = TaskProgress.valueOf(oldState.selectedProgress?:TaskProgress.UNSCHEDULED.toString())
+            val id = oldState.taskToBeExpanded?.id?:""
+
+            when(
+                val result = repository.updateTask(
+                title= title,
+                body = body,
+                id = id,
+                startTime = startTime,
+                endTime = endTime,
+                progress = progress,
+                )
+            ){
+                is Result.Failure -> {
+                    setState(oldState.copy(isLoading = false))
+                }
+                is Result.Success -> {
+                    setState(
+                        oldState.copy(
+                            isLoading = false,
+                            selectedProgress = null,
+                        ),
+                    )
+                    sendEvent(TaskScreenUIEvents.OnChangeExpandedDialogState(false))
+                    sendEvent(TaskScreenUIEvents.GetTasks)
+                }
+            }
+        }
     }
 
     private fun setTaskToBeUpdated(oldState: TaskScreenUIState, task: Task) {

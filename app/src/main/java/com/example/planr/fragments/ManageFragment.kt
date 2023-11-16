@@ -120,7 +120,9 @@ fun ManageFragment(manViewModel: ManageViewModel){
                     event = ManageScreenUIEvents.OnChangeEndTime(endTime= endTime)
                 )
             },
-            saveTask = { manViewModel.sendEvent(event = ManageScreenUIEvents.UpdateTask) },
+            saveTask = {
+                manViewModel.sendEvent(event = ManageScreenUIEvents.UpdateTask)
+                       },
             closeDialog = { manViewModel.sendEvent(event = ManageScreenUIEvents.OnChangeUpdateDialogState(false)) },
             task = uiState.taskToBeUpdated,
             uiState = uiState

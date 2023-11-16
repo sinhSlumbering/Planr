@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -19,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -37,7 +40,8 @@ fun ExpandedTaskCard(
     closeDialog: ()-> Unit,
     onExpandedChange: (Boolean) -> Unit,
     uiState: TaskScreenUIState,
-    selectedProgress: (String) -> Unit
+    selectedProgress: (String) -> Unit,
+    saveTask: () -> Unit,
 ){
     Dialog(onDismissRequest = { closeDialog() }) {
         Surface(
@@ -132,6 +136,30 @@ fun ExpandedTaskCard(
                                     )
                                 }
                             }
+                        }
+                    }
+                }
+
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                    ) {
+                        Button(
+                            onClick = {
+                                saveTask()
+                                selectedProgress(TaskProgress.UNSCHEDULED.toString())
+                                closeDialog()
+                            },
+                            modifier = Modifier.padding(horizontal = 12.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Black,
+                                contentColor = Color.White,
+                            ),
+                        ) {
+                            Text(text = "Update Task")
                         }
                     }
                 }

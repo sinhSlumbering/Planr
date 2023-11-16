@@ -46,6 +46,11 @@ fun taskScreen(
                 tsViewModel.sendEvent(
                     event = TaskScreenUIEvents.OnChangeDropDownOption(str)
                 )
+            },
+            saveTask = {
+                tsViewModel.sendEvent(
+                    event = TaskScreenUIEvents.UpdateTask
+                )
             }
         )
     }
